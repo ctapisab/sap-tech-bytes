@@ -58,7 +58,7 @@ get_version() {
   # Determine the version (uses the proper grep, from GNU)
 
   local file=$1
-  "$file" --version 2> /dev/null | grep -P -o '(?<=v)\d+\.\d+\.\d+'
+  "$file" --version 2> /dev/null | perl -nle'print $& while m{(?<=v)\d+\.\d+\.\d+}g'
 
 }
 
